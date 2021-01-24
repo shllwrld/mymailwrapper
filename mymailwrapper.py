@@ -126,7 +126,8 @@ class MyMailSearch:
         return base + arg_name + arg_offset + optional
 
     def get_search_data(self, search_name, offset, *args, **kwargs):
-        logger.info(f"offset {offset}")
+        if offset != 0:
+            logger.info(f"offset {offset}")
         url = self.get_search_url(search_name, offset, *args, **kwargs)
         while True:
             r = self.session.get(url)
@@ -343,7 +344,7 @@ class MyMailSearch:
 def console_run():
     parent_parser = argparse.ArgumentParser(add_help=False)
     parent_parser.add_argument("--debug", help="increase verbosity level", action="store_true")
-    parent_parser.add_argument("--quite", help="decrease verbosity level", action="store_true")
+    parent_parser.add_argument("--quiet", help="decrease verbosity level", action="store_true")
     parent_parser.add_argument("--timeout", help="set custom timeout between requests (default 5s)",
                                default=5, type=int)
 
