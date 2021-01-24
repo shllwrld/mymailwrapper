@@ -387,7 +387,7 @@ def console_run():
 
     if args.debug:
         logger.setLevel(LOG_LEVELS["DEBUG"])
-    if args.quite:
+    if args.quiet:
         logger.setLevel(LOG_LEVELS["WARNING"])
 
     if cmd:
